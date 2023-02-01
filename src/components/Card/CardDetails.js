@@ -1,14 +1,13 @@
 import React, { useState, useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 
-
-import "./Card.module.scss";
+import './Card.module.scss'
 
 const CardDetails = () => {
 	const { id } = useParams()
 
 	const [fetchedData, updateFetchedData] = useState([])
-	const { name, location, origin, gender, image, status, species,episode } = fetchedData
+	const { name, location, origin, gender, image, status, species, episode } = fetchedData
 
 	const api = `https://rickandmortyapi.com/api/character/${id}`
 
@@ -19,31 +18,24 @@ const CardDetails = () => {
 		})()
 	}, [api])
 
-	return ( 
-		<div className="container d-flex justify-content-center  mb-5">
-			
-			<div className="img-thumbnail zoom d-flex flex-column mx-3 gap-3 bg-light  rounded-4 border-4"
-			style = {{
-				
-				position: "absolute",
-				top: "50%",
-				left: "50%",
-		
-				minWidth: 300,
-				maxWidth: 500,
-				bgcolor: "background.primary",
-				
-				maxHeight: 300,
-				overflowY: "auto",
-				
-				boxShadow: 24,
-				p: 4,
-				
-			
-			}
-			}
+	return (
+		<div className="container d-flex justify-content-center bg-light  mb-5">
+			<div
+				className="img-thumbnail zoom d-flex flex-column mx-3 gap-3 bg-light  rounded-4 border-4"
+				style={{
+					position: 'absolute',
+					border: '4px solid rgba(20, 0, 20, 1)',
+					minWidth: 300,
+					maxWidth: 500,
+					bgcolor: 'background.primary',
+
+					maxHeight: 800,
+
+					boxShadow: 24,
+					p: 4,
+				}}
 			>
-				<h1 className="text-center">{name}</h1>
+				<h1 className="text-center ">{name}</h1>
 
 				<img className="img-thumbnail zoom  rounded-4 border-4" src={image} alt="" />
 				{(() => {
@@ -55,8 +47,7 @@ const CardDetails = () => {
 						return <div className="badge bg-secondary fs-5">{status}</div>
 					}
 				})()}
-				<div className="content" id="content"
-				>
+				<div className="content" id="content">
 					<div className="">
 						<span className="fw-bold">Gender : </span>
 						{gender}
@@ -74,13 +65,9 @@ const CardDetails = () => {
 						{species}
 					</div>
 					<div className="">
-					
 						<span className="fw-bold">N° de Episodios en el que aparece: </span>
-						{episode?.length} 
-
-						
+						{episode?.length}
 					</div>
-					
 				</div>
 			</div>
 		</div>
